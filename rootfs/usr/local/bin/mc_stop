@@ -7,5 +7,5 @@
 #
 ###########################################################
 
-supervisorctl stop spigot
+supervisorctl stop paper
 
