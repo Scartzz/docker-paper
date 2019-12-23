@@ -211,6 +211,8 @@ buildjar() {
     export HOME
     cd $HOME
     git config --global --unset core.autocrlf
+    git config --global user.name "ignored"
+    git config --global user.email "ignored@ignored.com"
     ./paper jar
     cp /build-mc/paperclip.jar $PAPER_HOME/paper.jar
     cd $PAPER_HOME/
