@@ -9,7 +9,7 @@
 # Description:    Minecraft Server Control Script
 ### END INIT INFO
 #
-# startscript for spigot minecraft server
+# startscript for paper minecraft server
 #
 # (c) 2015-2016 nimmis <kjell.havneskold@gmail.com>
 #
@@ -20,7 +20,7 @@
 
 
 MC_USER=minecraft       # User name running the minecraft server
-MC_PROC=spigot.jar   # name of minecraft jar file
+MC_PROC=paper.jar   # name of minecraft jar file
 MC_DIR=/minecraft # Directory where the server should run
 
 if [ -z "$MC_MAXMEM" ]; then
@@ -195,29 +195,27 @@ checkOK() {
 
 
 #
-# create spigot jar for requested version
+# create paper jar for requested version
 #
 
 buildjar() {
   # build it if it not exists
-  if [ ! -f $SPIGOT_HOME/spigot-$1.jar ]; then
-    echo "Building spigot version ($1) jar file, be patient"
+  if [ ! -f $PAPER_HOME/paper.jar ]; then
+    echo "Building paper version ($1) jar file, be patient"
     if [ -d /build-mc ]; then
 	rm -Rf /build-mc
     fi
     mkdir -p /build-mc
-    wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -O /build-mc/BuildTools.jar
+    git clone https://github.com/PaperMC/Paper.git /build-mc/
     HOME=/build-mc
     export HOME
     cd $HOME
     git config --global --unset core.autocrlf
-    java -Xmx1024M -jar BuildTools.jar --rev $1
-    cp /build-mc/Spigot/Spigot-Server/target/spigot-*.jar $SPIGOT_HOME/spigot-$1.jar
-    cd $SPIGOT_HOME/
+    ./paper jar
+    cp /build-mc/paperclip.jar $PAPER_HOME/paper.jar
+    cd $PAPER_HOME/
     rm -Rf /build-mc
   fi
-  execCMD "rm -f $SPIGOT_HOME/spigot.jar"
-  execCMD "ln -s $SPIGOT_HOME/spigot-$1.jar $SPIGOT_HOME/spigot.jar"
 }
 	
 #
