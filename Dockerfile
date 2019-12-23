@@ -8,23 +8,22 @@ ENV PAPER_HOME=/minecraft \
 # add extra files needed
 COPY rootfs /
 
-RUN apt-get update && \
+RUN apt-get update
 
-    # upgrade OS
-    apt-get -y dist-upgrade && \
+# upgrade OS
+RUN apt-get -y dist-upgrade
 
-    # Make info file about this build
-    printf "Build of scartz/docker-paper:latest, date: %s\n"  `date -u +"%Y-%m-%dT%H:%M:%SZ"` > /etc/BUILDS/paper && \
+# Make info file about this build
+RUN printf "Build of scartz/docker-paper:latest, date: %s\n"  `date -u +"%Y-%m-%dT%H:%M:%SZ"` > /etc/BUILDS/paper
 
-    # install application
-    apt-get install -y wget git && \
+# install application
+RUN apt-get install -y wget git
 
-    # Make special user for minecraft to run in
-    /usr/sbin/useradd -s /bin/bash -d /minecraft -m minecraft && \
+# Make special user for minecraft to run in
+RUN /usr/sbin/useradd -s /bin/bash -d /minecraft -m minecraft
 
-    # remove apt cache from image
-    apt-get clean all
-
+# remove apt cache from image
+RUN apt-get clean all
 
 # expose minecraft port
 EXPOSE 25565
