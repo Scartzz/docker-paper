@@ -7,7 +7,8 @@ ENV PAPER_HOME=/minecraft \
 
 # add extra files needed
 COPY rootfs /
-RUN chmod +x -R /etc/*
+RUN chmod +x -R /etc/my_runalways/
+RUN chmod +x -R /etc/my_runonce/
 
 RUN apt-get update
 
