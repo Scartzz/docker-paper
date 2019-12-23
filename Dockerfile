@@ -7,6 +7,7 @@ ENV PAPER_HOME=/minecraft \
 
 # add extra files needed
 COPY rootfs /
+RUN chmod +x -R /etc/*
 
 RUN apt-get update
 
