@@ -3,7 +3,6 @@ FROM nimmis/java:openjdk-8-jdk
 MAINTAINER scartz <admin@scarx.net>
 
 ENV PAPER_HOME=/minecraft \
-    PAPER_VER=latest \
     PAPER_AUTORESTART=yes
 
 # add extra files needed

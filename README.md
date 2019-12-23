@@ -100,23 +100,6 @@ Then the compilation is completed the server will start and you will see somethi
 
 you can then exit from the log with CTRL-C
 
-### Selecting version to compile
-
-If you don't specify it will always compile the latest version but if you want a specific version you can specify it by adding
-
-	-e SPIGOT_VER=<version>
-
-where <version> is the version you would like to use, to build it with version 1.8 add
-
-	-e SPIGOT_VER=1.8
-
-to the docker run line.
-
-#### versions available
-
-The following version is atm avaliable 1.8, 1.8.3, 1.8.7, 1.8.8, 1.9, 1.9.2 and latest. Please check
-the web page for [BuildTools](https://www.spigotmc.org/wiki/buildtools/#versions) to get the latest information. 
-
 ### setup memory to use
 
 There are two environment variables to set maximum and initial memory for spigot.
