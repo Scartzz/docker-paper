@@ -7,5 +7,5 @@
 #
 ###########################################################
 
-supervisorctl start spigot
+supervisorctl start paper
 
